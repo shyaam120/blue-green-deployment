@@ -1,0 +1,29 @@
+services:
+
+  blue:
+    image: blue-green-app:1.0
+    container_name: blue
+    networks:
+      - blue-green-network
+
+  green:
+    image: blue-green-app:1.0
+    container_name: green
+    networks:
+      - blue-green-network
+
+  nginx:
+    build: ./nginx
+    container_name: blue-green-nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - blue
+      - green
+    networks:
+      - blue-green-network
+
+networks:
+  blue-green-network:
+    name: blue-green-network
+    driver: bridge
