@@ -12,7 +12,7 @@ public class App {
         int port = 8080;
 
         String version = System.getenv()
-                .getOrDefault("APP_VERSION", "1.0");
+                .getOrDefault("APP_VERSION", "2.0");
 
         HttpServer server = HttpServer.create(
                 new InetSocketAddress(port), 0
